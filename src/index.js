@@ -9,7 +9,8 @@ const DECKSIZE = CARDSPERSUIT * SUITS + JOKERS
 export const deck = [...Array(DECKSIZE + 1).keys()].slice(1)
 
 export const toNumber = letter => {
-    return letter.charCodeAt(0) - FIRSTLETTERCHARCODE + 1
+    const lowerCase = letter.toLowerCase()
+    return lowerCase.charCodeAt(0) - FIRSTLETTERCHARCODE + 1
 }
 
 export const toNumbers = plaintext => {
