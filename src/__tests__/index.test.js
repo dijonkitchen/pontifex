@@ -33,3 +33,8 @@ test('convert all numbers to letters', () => {
         expect(Cipher.toLetter(number)).toEqual(letters[index])
     })
 })
+
+test('convert numbers greater than 26 to letters', () => {
+    expect(Cipher.toLetter(27)).toEqual('a')
+    expect(Cipher.toLetter(29)).toEqual('c')
+})
