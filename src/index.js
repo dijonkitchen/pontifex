@@ -1,4 +1,6 @@
-const NUMLETTERS = 'z'.charCodeAt(0) - 'a'.charCodeAt(0) + 1
+const FIRSTLETTERCHARCODE = 'a'.charCodeAt(0)
+const LASTLETTERCHARCODE = 'z'.charCodeAt(0)
+const NUMLETTERS = LASTLETTERCHARCODE - FIRSTLETTERCHARCODE + 1
 const CARDSPERSUIT = 13
 const SUITS = 4
 const JOKERS = 2
@@ -7,8 +9,7 @@ const DECKSIZE = CARDSPERSUIT * SUITS + JOKERS
 export const deck = [...Array(DECKSIZE + 1).keys()].slice(1)
 
 export const toNumber = letter => {
-    const firstLetterChar = 'a'.charCodeAt(0)
-    return letter.charCodeAt(0) - firstLetterChar + 1
+    return letter.charCodeAt(0) - FIRSTLETTERCHARCODE + 1
 }
 
 export const toNumbers = plaintext => {
@@ -18,8 +19,7 @@ export const toNumbers = plaintext => {
 }
 
 export const toLetter = number => {
-    const firstLetterChar = 'a'.charCodeAt(0)
-    return String.fromCharCode(number % NUMLETTERS + firstLetterChar - 1)
+    return String.fromCharCode(number % NUMLETTERS + FIRSTLETTERCHARCODE - 1)
 }
 
 export const toText = numbers => {
