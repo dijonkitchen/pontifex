@@ -28,7 +28,7 @@ test('convert all letters to numbers', () => {
 
 test('convert all numbers to letters', () => {
     const firstLetterChar = 'a'.charCodeAt(0)
-    const letters = Cipher.deck.map( num => String.fromCharCode(num + firstLetterChar - 1))
+    const letters = Cipher.deck.map( num => String.fromCharCode(num % 26 + firstLetterChar - 1))
     Cipher.deck.forEach( (number, index) => {
         expect(Cipher.toLetter(number)).toEqual(letters[index])
     })
