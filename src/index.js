@@ -1,3 +1,5 @@
+const NUMLETTERS = 'z'.charCodeAt(0) - 'a'.charCodeAt(0) + 1
+
 export const deck = [...Array(55).keys()].slice(1)
 
 export const toNumber = letter => {
@@ -13,7 +15,7 @@ export const toNumbers = plaintext => {
 
 export const toLetter = number => {
     const firstLetterChar = 'a'.charCodeAt(0)
-    return String.fromCharCode(number % 26 + firstLetterChar - 1)
+    return String.fromCharCode(number % NUMLETTERS + firstLetterChar - 1)
 }
 
 export const toText = numbers => {
@@ -24,7 +26,7 @@ export const encrypt = (plaintext, key) => {
     const plaintextNumbers = toNumbers(plaintext)
     const keyNumbers = toNumbers(key)
     const cipherNums = plaintextNumbers.map( (num, index) => {
-        return (num + keyNumbers[index]) % 26
+        return (num + keyNumbers[index]) % NUMLETTERS
     })
     const letters = toText(cipherNums)
 
@@ -38,9 +40,9 @@ export const decrypt = (ciphertext, key) => {
         let grossNum = num
         const keyNum = keyNumbers[index]
         if (grossNum < keyNum) {
-            grossNum += 26
+            grossNum += NUMLETTERS
         }
-        return (grossNum - keyNum) % 26
+        return (grossNum - keyNum) % NUMLETTERS
     })
 
     return toText(textNums).toUpperCase()
