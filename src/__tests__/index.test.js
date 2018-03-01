@@ -38,3 +38,9 @@ test('convert numbers greater than 26 to letters', () => {
     expect(Cipher.toLetter(27)).toEqual('a')
     expect(Cipher.toLetter(29)).toEqual('c')
 })
+
+test('convert text to numbers', () => {
+    const plaintext = 'do not use pc'
+    const numbers = [4, 15, 14, 15, 20, 21, 19, 5, 16, 3]
+    expect(Cipher.toNumbers(plaintext)).toEqual(numbers)
+})
