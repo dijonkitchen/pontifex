@@ -1,6 +1,10 @@
 const NUMLETTERS = 'z'.charCodeAt(0) - 'a'.charCodeAt(0) + 1
+const CARDSPERSUIT = 13
+const SUITS = 4
+const JOKERS = 2
+const DECKSIZE = CARDSPERSUIT * SUITS + JOKERS
 
-export const deck = [...Array(55).keys()].slice(1)
+export const deck = [...Array(DECKSIZE + 1).keys()].slice(1)
 
 export const toNumber = letter => {
     const firstLetterChar = 'a'.charCodeAt(0)
