@@ -22,3 +22,14 @@ export const toLetter = number => {
 export const toText = numbers => {
     return numbers.map(num => toLetter(num)).join('')
 }
+
+export const encrypt = (plaintext, key) => {
+    const plaintextNumbers = toNumbers(plaintext)
+    const keyNumbers = toNumbers(key)
+    const cipherNums = plaintextNumbers.map( (num, index) => {
+        return (num + keyNumbers[index]) % 26
+    })
+    const letters = toText(cipherNums)
+
+    return letters.toUpperCase()
+}
