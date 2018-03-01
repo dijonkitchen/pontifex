@@ -33,3 +33,18 @@ export const encrypt = (plaintext, key) => {
 
     return letters.toUpperCase()
 }
+
+export const decrypt = (ciphertext, key) => {
+    const ciphertextNumbers = toNumbers(ciphertext.toLowerCase())
+    const keyNumbers = toNumbers(key)
+    const textNums = ciphertextNumbers.map( (num, index) => {
+        let grossNum = num
+        const keyNum = keyNumbers[index]
+        if (grossNum < keyNum) {
+            grossNum += 26
+        }
+        return (grossNum - keyNum) % 26
+    })
+
+    return toText(textNums).toUpperCase()
+}
