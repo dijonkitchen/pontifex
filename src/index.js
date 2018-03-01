@@ -7,3 +7,8 @@ export const toNumber = letter => {
     const firstLetterChar = 'a'.charCodeAt(0)
     return letter.charCodeAt(0) - firstLetterChar + 1
 }
+
+export const toLetter = number => {
+    const firstLetterChar = 'a'.charCodeAt(0)
+    return String.fromCharCode(number + firstLetterChar - 1)
+}
