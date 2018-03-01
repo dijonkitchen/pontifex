@@ -58,3 +58,11 @@ test('encrypt text with a key', () => {
     const ciphertext = 'OSKJJJGTMW'
     expect(Cipher.encrypt(plaintext, key)).toEqual(ciphertext)
 })
+
+test('decrypt text with a key', () => {
+    const plaintext = 'DONOTUSEPC'
+    const numbers = [4, 15, 14, 15, 20, 21, 19, 5, 16, 3]
+    const key = 'kdwuponowt'
+    const ciphertext = 'OSKJJJGTMW'
+    expect(Cipher.decrypt(ciphertext, key)).toEqual(plaintext)
+})
