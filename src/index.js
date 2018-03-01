@@ -10,5 +10,5 @@ export const toNumber = letter => {
 
 export const toLetter = number => {
     const firstLetterChar = 'a'.charCodeAt(0)
-    return String.fromCharCode(number + firstLetterChar - 1)
+    return String.fromCharCode(number % 26 + firstLetterChar - 1)
 }
