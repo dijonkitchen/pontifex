@@ -17,3 +17,11 @@ test('deck has all 54 cards', () => {
 test('convert letter to number', () => {
     expect(Cipher.toNumber('a')).toEqual(1)
 })
+
+test('convert all letters to numbers', () => {
+    const firstLetterChar = 'a'.charCodeAt(0)
+    const letters = Cipher.deck.map( num => String.fromCharCode(num + firstLetterChar - 1))
+    letters.forEach( (letter, index) => {
+        expect(Cipher.toNumber(letter)).toEqual(index + 1)
+    })
+})
