@@ -16,6 +16,7 @@ test('deck has all 54 cards', () => {
 
 test('convert letter to number', () => {
     expect(Cipher.toNumber('a')).toEqual(1)
+    expect(Cipher.toNumber('A')).toEqual(1)
 })
 
 test('convert all letters to numbers', () => {
