@@ -18,3 +18,7 @@ export const toLetter = number => {
     const firstLetterChar = 'a'.charCodeAt(0)
     return String.fromCharCode(number % 26 + firstLetterChar - 1)
 }
+
+export const toText = numbers => {
+    return numbers.map(num => toLetter(num)).join('')
+}
