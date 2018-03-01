@@ -8,6 +8,12 @@ export const toNumber = letter => {
     return letter.charCodeAt(0) - firstLetterChar + 1
 }
 
+export const toNumbers = plaintext => {
+    const noWhiteSpace = plaintext.replace(/ /g, '')
+    const letters = noWhiteSpace.split('')
+    return letters.map( char => toNumber(char))
+}
+
 export const toLetter = number => {
     const firstLetterChar = 'a'.charCodeAt(0)
     return String.fromCharCode(number % 26 + firstLetterChar - 1)
