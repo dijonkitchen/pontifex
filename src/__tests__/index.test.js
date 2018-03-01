@@ -44,3 +44,9 @@ test('convert text to numbers', () => {
     const numbers = [4, 15, 14, 15, 20, 21, 19, 5, 16, 3]
     expect(Cipher.toNumbers(plaintext)).toEqual(numbers)
 })
+
+test('convert numbers to text', () => {
+    const plaintext = 'donotusepc'
+    const numbers = [4, 15, 14, 15, 20, 21, 19, 5, 16, 3]
+    expect(Cipher.toText(numbers)).toEqual(plaintext)
+})
