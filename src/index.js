@@ -6,28 +6,28 @@ const SUITS = 4
 const JOKERS = 2
 const DECKSIZE = CARDSPERSUIT * SUITS + JOKERS
 
-export const deck = [...Array(DECKSIZE + 1).keys()].slice(1)
+const deck = [...Array(DECKSIZE + 1).keys()].slice(1)
 
-export const toNumber = letter => {
+const toNumber = letter => {
     const lowerCase = letter.toLowerCase()
     return lowerCase.charCodeAt(0) - FIRSTLETTERCHARCODE + 1
 }
 
-export const toNumbers = plaintext => {
+const toNumbers = plaintext => {
     const noWhiteSpace = plaintext.replace(/ /g, '')
     const letters = noWhiteSpace.split('')
     return letters.map( char => toNumber(char))
 }
 
-export const toLetter = number => {
+const toLetter = number => {
     return String.fromCharCode(number % NUMLETTERS + FIRSTLETTERCHARCODE - 1)
 }
 
-export const toText = numbers => {
+const toText = numbers => {
     return numbers.map(num => toLetter(num)).join('')
 }
 
-export const encrypt = (plaintext, key) => {
+const encrypt = (plaintext, key) => {
     const plaintextNumbers = toNumbers(plaintext)
     const keyNumbers = toNumbers(key)
     const cipherNums = plaintextNumbers.map( (num, index) => {
@@ -38,7 +38,7 @@ export const encrypt = (plaintext, key) => {
     return cipherText.toUpperCase()
 }
 
-export const decrypt = (cipherText, key) => {
+const decrypt = (cipherText, key) => {
     const cipherTextNumbers = toNumbers(cipherText.toLowerCase())
     const keyNumbers = toNumbers(key)
     const textNums = cipherTextNumbers.map( (num, index) => {
@@ -52,4 +52,14 @@ export const decrypt = (cipherText, key) => {
     const plaintext = toText(textNums)
 
     return plaintext.toUpperCase()
+}
+
+module.exports = {
+    deck,
+    toNumber,
+    toNumbers,
+    toLetter,
+    toText,
+    encrypt,
+    decrypt
 }

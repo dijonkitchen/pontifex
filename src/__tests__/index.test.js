@@ -1,4 +1,4 @@
-import * as Cipher from '../'
+const Cipher = require('../')
 
 test('deck exists', () => {
     expect(Cipher.deck).toBeTruthy()
