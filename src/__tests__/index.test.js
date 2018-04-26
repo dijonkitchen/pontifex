@@ -83,3 +83,62 @@ test('decrypt text with a key with spaces', () => {
     const ciphertext = 'APXDD ISMQ'
     expect(Cipher.decrypt(ciphertext, key)).toEqual(plaintext)
 })
+
+test('does not moves a card by 1 place if it does not exist', () => {
+    const card = 1
+    const deck = [card,2,3,4,5]
+
+    const subject = Cipher.move(deck, 6, 1)
+
+    expect(subject).toEqual(deck)
+})
+
+test('moves a card by 1 place', () => {
+    const card = 1
+    const deck = [card,2,3,4,5]
+
+    const subject = Cipher.move(deck, card, 1)
+
+    const expected = [2,card,3,4,5]
+    expect(subject).toEqual(expected)
+})
+
+test('moves a card by 1 place', () => {
+    const card = 53
+    const deck = [card,7,2,54,9,4,1]
+
+    const subject = Cipher.move(deck, card, 1)
+
+    const expected = [7,card,2,54,9,4,1]
+    expect(subject).toEqual(expected)
+})
+
+test('moves a card by 2 places', () => {
+    const card = 54
+    const deck = [7,53,2,card,9,4,1]
+
+    const subject = Cipher.move(deck, card, 2)
+
+    const expected = [7,53,2,9,4,card,1]
+    expect(subject).toEqual(expected)
+})
+
+test('moves a card beyond the deck size', () => {
+    const card = 54
+    const deck = [7,53,2,card,9,4,1]
+
+    const subject = Cipher.move(deck, card, 4)
+
+    const expected = [7,card,53,2,9,4,1]
+    expect(subject).toEqual(expected)
+})
+
+test('moves a card by more than the deck size', () => {
+    const card = 54
+    const deck = [7,53,2,card,9,4,1]
+
+    const subject = Cipher.move(deck, card, 10)
+
+    const expected = [7,card,53,2,9,4,1]
+    expect(subject).toEqual(expected)
+})

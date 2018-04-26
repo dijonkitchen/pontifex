@@ -54,6 +54,19 @@ const decrypt = (cipherText, key) => {
     return plaintext.toUpperCase()
 }
 
+const move = (deck, card, numToMove) => {
+    const cardIndex = deck.indexOf(card)
+    if (cardIndex === -1) {
+        return deck
+    } else {
+        const newDeck = deck.slice()
+        newDeck.splice(cardIndex, 1)
+        const newIndex = (cardIndex + numToMove) % (deck.length - 1)
+        newDeck.splice(newIndex, 0, card)
+        return newDeck
+    }
+}
+
 module.exports = {
     deck,
     toNumber,
@@ -61,5 +74,6 @@ module.exports = {
     toLetter,
     toText,
     encrypt,
-    decrypt
+    decrypt,
+    move,
 }
