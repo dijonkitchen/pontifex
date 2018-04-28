@@ -1,3 +1,7 @@
+[![CircleCI](https://circleci.com/gh/dijonkitchen/pontifex.svg?style=svg)](https://circleci.com/gh/dijonkitchen/pontifex)
+
+[![codecov](https://codecov.io/gh/dijonkitchen/pontifex/branch/master/graph/badge.svg)](https://codecov.io/gh/dijonkitchen/pontifex)
+
 # Ponifex, the solitaire cipher
 
 Building in Javascript with test-driven development. To learn more about cryptography and continue building incremental functionality, with fast tests, and complete coverage for inexpensive adaptability.
