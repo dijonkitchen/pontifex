@@ -54,7 +54,12 @@ const decrypt = (cipherText, key) => {
     return plaintext.toUpperCase()
 }
 
-const move = (deck, card, numToMove) => {
+const move = (args) => {
+    const {
+        deck,
+        card,
+        numToMove
+    } = args
     const cardIndex = deck.indexOf(card)
     if (cardIndex === -1) {
         return deck
