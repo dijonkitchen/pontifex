@@ -72,6 +72,30 @@ const move = (args) => {
     }
 }
 
+const tripleCut = (deck, card1, card2) => {
+    const cardIndex1 = deck.indexOf(card1)
+    const cardIndex2 = deck.indexOf(card2)
+
+    const lowerIndex = Math.min(cardIndex1, cardIndex2)
+    const higherIndex = Math.max(cardIndex1, cardIndex2) + 1
+
+    const topCut = deck.slice(0, lowerIndex)
+    const midCut = deck.slice(lowerIndex, higherIndex)
+    const botCut = deck.slice(higherIndex)
+
+    return botCut.concat(midCut, topCut)
+}
+
+const countCut = (deck) => {
+    const last = deck[deck.length - 1]
+    const allButLast = deck.slice(0, -1)
+
+    const topCut = allButLast.slice(0, last)
+    const botCut = allButLast.slice(last)
+
+    return botCut.concat(topCut, last)
+}
+
 module.exports = {
     deck,
     toNumber,
@@ -81,4 +105,6 @@ module.exports = {
     encrypt,
     decrypt,
     move,
+    tripleCut,
+    countCut,
 }
