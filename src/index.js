@@ -86,6 +86,16 @@ const tripleCut = (deck, card1, card2) => {
     return botCut.concat(midCut, topCut)
 }
 
+const countCut = (deck) => {
+    const last = deck[deck.length - 1]
+    const allButLast = deck.slice(0, -1)
+
+    const topCut = allButLast.slice(0, last)
+    const botCut = allButLast.slice(last)
+
+    return botCut.concat(topCut, last)
+}
+
 module.exports = {
     deck,
     toNumber,
@@ -96,4 +106,5 @@ module.exports = {
     decrypt,
     move,
     tripleCut,
+    countCut,
 }

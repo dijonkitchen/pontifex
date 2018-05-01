@@ -175,3 +175,19 @@ test('triple cuts deck irrespective of order', () => {
     const expected = [3,5,46,34,23,4]
     expect(subject).toEqual(expected)
 })
+
+test('count cut deck', () => {
+    const deck = [23,4,5,46,34,3]
+    const subject = Cipher.countCut(deck)
+
+    const expected = [46,34,23,4,5,3]
+    expect(subject).toEqual(expected)
+})
+
+test('count cut deck', () => {
+    const deck = [23,4,5,46,34,2]
+    const subject = Cipher.countCut(deck)
+
+    const expected = [5,46,34,23,4,2]
+    expect(subject).toEqual(expected)
+})
