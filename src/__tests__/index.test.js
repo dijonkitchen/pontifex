@@ -142,3 +142,36 @@ test('moves a card by more than the deck size', () => {
     const expected = [7,card,53,2,9,4,1]
     expect(subject).toEqual(expected)
 })
+
+test('triple cut function exists', () => {
+    const subject = Cipher.tripleCut
+
+    expect(subject).toBeTruthy()
+})
+
+test('triple cuts deck', () => {
+    const deck = [2,4,5,46,34,3]
+
+    const subject = Cipher.tripleCut(deck,34,5)
+
+    const expected = [3,5,46,34,2,4]
+    expect(subject).toEqual(expected)
+})
+
+test('triple cuts deck', () => {
+    const deck = [23,4,5,46,34,3]
+
+    const subject = Cipher.tripleCut(deck,5,34)
+
+    const expected = [3,5,46,34,23,4]
+    expect(subject).toEqual(expected)
+})
+
+test('triple cuts deck irrespective of order', () => {
+    const deck = [23,4,5,46,34,3]
+
+    const subject = Cipher.tripleCut(deck,34,5)
+
+    const expected = [3,5,46,34,23,4]
+    expect(subject).toEqual(expected)
+})
