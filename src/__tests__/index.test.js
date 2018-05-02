@@ -225,3 +225,17 @@ test('find output of joker', () => {
 
     expect(subject).toEqual(undefined)
 })
+
+test('shuffle function exists', () => {
+    const subject = Cipher.shuffle
+
+    expect(subject).toBeTruthy()
+})
+
+test('shuffles deck', () => {
+    const deck = [1,2,3,4,5]
+    const subject = Cipher.shuffle(deck)
+
+    expect(subject).not.toEqual(deck)
+    expect(subject.length).toEqual(deck.length)
+})

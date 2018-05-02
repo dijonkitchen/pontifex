@@ -105,6 +105,19 @@ const output = (deck) => {
     }
 }
 
+const shuffle = (deck) => {
+    const newDeck = deck.slice()
+
+    for (let i = deck.length - 1; i > 0; i--) {
+        const randomIndex = Math.floor(Math.random() * (i + 1))
+        const tempSwapValue = newDeck[randomIndex]
+        newDeck[randomIndex] = newDeck[i]
+        newDeck[i] = tempSwapValue
+    }
+
+    return newDeck
+}
+
 module.exports = {
     deck,
     toNumber,
@@ -117,4 +130,5 @@ module.exports = {
     tripleCut,
     countCut,
     output,
+    shuffle,
 }
