@@ -192,36 +192,36 @@ test('count cut deck', () => {
     expect(subject).toEqual(expected)
 })
 
-test('find output function exists', () => {
-    const subject = Cipher.output
+test('topOutput function exists', () => {
+    const subject = Cipher.topOutput
 
     expect(subject).toBeTruthy()
 })
 
-test('find output', () => {
+test('find top card output', () => {
     const deck = [3,4,5,46,34,2]
-    const subject = Cipher.output(deck)
+    const subject = Cipher.topOutput(deck)
 
     expect(subject).toEqual(46)
 })
 
-test('find output', () => {
+test('find top card output', () => {
     const deck = [4,3,5,16,34,2]
-    const subject = Cipher.output(deck)
+    const subject = Cipher.topOutput(deck)
 
     expect(subject).toEqual(34)
 })
 
-test('find output of joker', () => {
+test('find top card output of joker', () => {
     const deck = [54,3,5,16,34,2]
-    const subject = Cipher.output(deck)
+    const subject = Cipher.topOutput(deck)
 
     expect(subject).toEqual(undefined)
 })
 
-test('find output of joker', () => {
+test('find top card output of joker', () => {
     const deck = [53,3,5,16,34,2]
-    const subject = Cipher.output(deck)
+    const subject = Cipher.topOutput(deck)
 
     expect(subject).toEqual(undefined)
 })

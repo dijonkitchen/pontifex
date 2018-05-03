@@ -96,7 +96,7 @@ const countCut = (deck) => {
     return botCut.concat(topCut, last)
 }
 
-const output = (deck) => {
+const topOutput = (deck) => {
     const first = deck[0]
     if (first === 53 || first === 54) {
         return undefined
@@ -129,6 +129,6 @@ module.exports = {
     move,
     tripleCut,
     countCut,
-    output,
+    topOutput,
     shuffle,
 }
