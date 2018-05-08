@@ -54,7 +54,6 @@ test('convert numbers to text', () => {
 
 test('encrypt text with a key', () => {
     const plaintext = 'do not use pc'
-    const numbers = [4, 15, 14, 15, 20, 21, 19, 5, 16, 3]
     const key = 'kdwuponowt'
     const ciphertext = 'OSKJJJGTMW'
     expect(Cipher.encrypt(plaintext, key)).toEqual(ciphertext)
@@ -62,7 +61,6 @@ test('encrypt text with a key', () => {
 
 test('encrypt text with a key with spaces', () => {
     const plaintext = 'PLAINTEXT'
-    const numbers = [4, 15, 14, 15, 20, 21, 19, 5, 16, 3]
     const key = ' kdwup onowt   '
     const ciphertext = 'APXDDISMQ'
     expect(Cipher.encrypt(plaintext, key)).toEqual(ciphertext)
@@ -70,7 +68,6 @@ test('encrypt text with a key with spaces', () => {
 
 test('decrypt text with a key', () => {
     const plaintext = 'DONOTUSEPC'
-    const numbers = [4, 15, 14, 15, 20, 21, 19, 5, 16, 3]
     const key = 'kdwuponowt'
     const ciphertext = 'OSKJJJGTMW'
     expect(Cipher.decrypt(ciphertext, key)).toEqual(plaintext)
@@ -78,7 +75,6 @@ test('decrypt text with a key', () => {
 
 test('decrypt text with a key with spaces', () => {
     const plaintext = 'PLAINTEXT'
-    const numbers = [4, 15, 14, 15, 20, 21, 19, 5, 16, 3]
     const key = ' kdwup onowt'
     const ciphertext = 'APXDD ISMQ'
     expect(Cipher.decrypt(ciphertext, key)).toEqual(plaintext)
