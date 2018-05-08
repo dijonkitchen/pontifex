@@ -4,8 +4,9 @@ describe('Integration tests', () => {
     test('generates proper output given a fresh deck', () => {
         let deck = Cipher.deck
         const outputs = []
+        const expected = 'EXKYIZSGEHUNTIQ'
 
-        for (let i = 0; i <= 10; i++) {
+        for (let i = 0; i <= expected.length; i++) {
             const returnObj = Cipher.outputStream({deck})
             outputs.push(returnObj.output)
             deck = returnObj.deck
@@ -18,8 +19,8 @@ describe('Integration tests', () => {
             }
         })
         const key = Cipher.toText(sanitized)
-        const subject = Cipher.encrypt('AAAAA AAAAA', key)
+        const subject = Cipher.encrypt('AAAAA AAAAA AAAAA', key)
 
-        expect(subject).toEqual('EXKYIZSGEH')
+        expect(subject).toEqual(expected)
     })
 })
