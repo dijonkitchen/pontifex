@@ -265,16 +265,20 @@ test('find top card output', () => {
 
 test('find top card output of joker', () => {
     const deck = [54,3,5,16,34,2]
+    deck[53] = 9
+
     const subject = Cipher.topOutput(deck)
 
-    expect(subject).toEqual(undefined)
+    expect(subject).toEqual(9)
 })
 
 test('find top card output of joker', () => {
     const deck = [53,3,5,16,34,2]
+    deck[53] = 9
+
     const subject = Cipher.topOutput(deck)
 
-    expect(subject).toEqual(undefined)
+    expect(subject).toEqual(9)
 })
 
 test('shuffle function exists', () => {

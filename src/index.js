@@ -103,11 +103,9 @@ const countCut = (deck) => {
 }
 
 const topOutput = (deck) => {
-    const first = deck[0]
-    if (first === 53 || first === 54) {
-        return undefined
-    } else {
-        return deck[first]
+    const firstCardVal = Math.min(53, deck[0])
+
+    return Math.min(53, deck[firstCardVal])
     }
 }
 
