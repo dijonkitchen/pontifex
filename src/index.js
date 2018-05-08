@@ -106,6 +106,28 @@ const topOutput = (deck) => {
     const firstCardVal = Math.min(53, deck[0])
 
     return Math.min(53, deck[firstCardVal])
+}
+
+const outputStream = (inputs) => {
+    const initialDeck = inputs.deck
+
+    const step1deck = move({
+        deck: initialDeck,
+        card: 53,
+        numToMove: 1
+    })
+    const step2deck = move({
+        deck: step1deck,
+        card: 54,
+        numToMove: 2
+    })
+    const step3deck = tripleCut(step2deck, 53, 54)
+    const step4deck = countCut(step3deck)
+    const output = topOutput(step4deck)
+
+    return {
+        deck: step4deck,
+        output
     }
 }
 
@@ -134,5 +156,6 @@ module.exports = {
     tripleCut,
     countCut,
     topOutput,
+    outputStream,
     shuffle,
 }

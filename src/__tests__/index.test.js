@@ -281,6 +281,42 @@ test('find top card output of joker', () => {
     expect(subject).toEqual(9)
 })
 
+test('outputStream function exists', () => {
+    const subject = Cipher.outputStream
+
+    expect(subject).toBeTruthy()
+})
+
+test('check first output of unkeyed deck', () => {
+    const unkeyedDeck = Cipher.deck
+
+    const subject = Cipher.outputStream({deck: unkeyedDeck})
+
+    expect(subject.output).toEqual(4)
+})
+
+test('check second output of unkeyed deck', () => {
+    const unkeyedDeck = Cipher.deck
+
+    const deck = Cipher.outputStream({deck: unkeyedDeck}).deck
+    const subject = Cipher.outputStream({deck})
+
+    expect(subject.output).toEqual(49)
+})
+
+test('check first 10 outputs of unkeyed deck', () => {
+    let deck = Cipher.deck
+    const subject = []
+
+    for (let i = 0; i <= 10; i++) {
+        const returnObj = Cipher.outputStream({deck})
+        subject.push(returnObj.output)
+        deck = returnObj.deck
+    }
+
+    expect(subject).toEqual([4,49,10,53,24,8,51,44,6,4,33])
+})
+
 test('shuffle function exists', () => {
     const subject = Cipher.shuffle
 
