@@ -66,8 +66,14 @@ const move = (args) => {
     } else {
         const newDeck = deck.slice()
         newDeck.splice(cardIndex, 1)
-        const newIndex = (cardIndex + numToMove) % (deck.length - 1)
+        const higherIndex = cardIndex + numToMove;
+        let newIndex = higherIndex % newDeck.length
+
+        if (higherIndex !== 0 && higherIndex % newDeck.length === 0) {
+            newIndex = newDeck.length
+        }
         newDeck.splice(newIndex, 0, card)
+
         return newDeck
     }
 }

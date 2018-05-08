@@ -93,6 +93,36 @@ test('does not moves a card by 1 place if it does not exist', () => {
     expect(subject).toEqual(deck)
 })
 
+test('moving a single card deck stays the same', () => {
+    const card = 1
+    const deck = [card]
+
+    const subject = Cipher.move({deck, card, numToMove: 3})
+
+    const expected = deck
+    expect(subject).toEqual(expected)
+})
+
+test('moves a card by 1 place', () => {
+    const card = 1
+    const deck = [card,2]
+
+    const subject = Cipher.move({deck, card, numToMove: 1})
+
+    const expected = [2,card]
+    expect(subject).toEqual(expected)
+})
+
+test('moves a card by 2 places', () => {
+    const card = 1
+    const deck = [card,2]
+
+    const subject = Cipher.move({deck, card, numToMove: 2})
+
+    const expected = [2, card]
+    expect(subject).toEqual(expected)
+})
+
 test('moves a card by 1 place', () => {
     const card = 1
     const deck = [card,2,3,4,5]
@@ -110,6 +140,16 @@ test('moves a card by 1 place', () => {
     const subject = Cipher.move({deck, card, numToMove: 1})
 
     const expected = [7,card,2,54,9,4,1]
+    expect(subject).toEqual(expected)
+})
+
+test('moves a card by 1 place', () => {
+    const card = 53
+    const deck = [7,2,54,9,4,card,1]
+
+    const subject = Cipher.move({deck, card, numToMove: 1})
+
+    const expected = [7,2,54,9,4,1,card]
     expect(subject).toEqual(expected)
 })
 
@@ -140,6 +180,16 @@ test('moves a card by more than the deck size', () => {
     const subject = Cipher.move({deck, card, numToMove: 10})
 
     const expected = [7,card,53,2,9,4,1]
+    expect(subject).toEqual(expected)
+})
+
+test('moves a card by more than the deck size beyond existing index', () => {
+    const card = 54
+    const deck = [7,53,2,card,9,4,1]
+
+    const subject = Cipher.move({deck, card, numToMove: 13})
+
+    const expected = [7,53,2,9,card,4,1]
     expect(subject).toEqual(expected)
 })
 
@@ -178,6 +228,7 @@ test('triple cuts deck irrespective of order', () => {
 
 test('count cut deck', () => {
     const deck = [23,4,5,46,34,3]
+
     const subject = Cipher.countCut(deck)
 
     const expected = [46,34,23,4,5,3]
