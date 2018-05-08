@@ -14,6 +14,17 @@ test('deck has all 54 cards', () => {
     }
 })
 
+test('cannot modify deck', () => {
+    const subject = Cipher.deck
+
+    expect(subject.pop).toThrow()
+    expect(subject.push).toThrow()
+    expect(() => {
+        "use strict"
+        subject[0] = 99
+    }).toThrow()
+})
+
 test('convert letter to number', () => {
     expect(Cipher.toNumber('a')).toEqual(1)
     expect(Cipher.toNumber('A')).toEqual(1)

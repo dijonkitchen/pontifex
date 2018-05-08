@@ -6,7 +6,7 @@ const SUITS = 4
 const JOKERS = 2
 const DECKSIZE = CARDSPERSUIT * SUITS + JOKERS
 
-const deck = [...Array(DECKSIZE + 1).keys()].slice(1)
+const deck = Object.freeze([...Array(DECKSIZE + 1).keys()].slice(1))
 
 const toNumber = letter => {
     const lowerCase = letter.toLowerCase()
