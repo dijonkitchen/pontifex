@@ -39,11 +39,10 @@ test('convert all letters to numbers', () => {
 })
 
 test('convert all numbers to letters', () => {
-    const firstLetterChar = 'a'.charCodeAt(0)
-    const letters = Cipher.deck.map( num => String.fromCharCode(num % 26 + firstLetterChar - 1))
-    Cipher.deck.forEach( (number, index) => {
-        expect(Cipher.toLetter(number)).toEqual(letters[index])
-    })
+    expect(Cipher.toLetter(1)).toEqual('a')
+    expect(Cipher.toLetter(5)).toEqual('e')
+    expect(Cipher.toLetter(25)).toEqual('y')
+    expect(Cipher.toLetter(26)).toEqual('z')
 })
 
 test('convert numbers greater than 26 to letters', () => {

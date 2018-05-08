@@ -20,7 +20,11 @@ const toNumbers = plaintext => {
 }
 
 const toLetter = number => {
-    return String.fromCharCode(number % NUMLETTERS + FIRSTLETTERCHARCODE - 1)
+    let remainder = number % NUMLETTERS
+    if (number !== 0 && remainder === 0) {
+        remainder = NUMLETTERS
+    }
+    return String.fromCharCode(remainder + FIRSTLETTERCHARCODE - 1)
 }
 
 const toText = numbers => {
@@ -31,7 +35,12 @@ const encrypt = (plaintext, key) => {
     const plaintextNumbers = toNumbers(plaintext)
     const keyNumbers = toNumbers(key)
     const cipherNums = plaintextNumbers.map( (num, index) => {
-        return (num + keyNumbers[index]) % NUMLETTERS
+        const remainder = (num + keyNumbers[index]) % NUMLETTERS
+        if (num !== 0 && remainder === 0) {
+            return NUMLETTERS
+        } else {
+            return remainder
+        }
     })
     const cipherText = toText(cipherNums)
 
